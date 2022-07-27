@@ -28,4 +28,21 @@ func main() {
 	fmt.Println("a < b :", a < b)
 	fmt.Println("a >= b:", a >= b)
 	fmt.Println("a <= b:", a <= b)
+
+	// operator boolean
+	var (
+		x bool
+		y bool
+	)
+	fmt.Print("\nmasukkan nilai x [boolean]: ")
+	fmt.Scanln(&x)
+	fmt.Print("masukkan nilai y [boolean]: ")
+	fmt.Scanln(&y)
+	fmt.Println("\n===== Operator boolean =====")
+	fmt.Println("  x   :", x)
+	fmt.Println("  y   :", y)
+	fmt.Println(" !x   :", !x)
+	fmt.Println(" !y   :", !y)
+	fmt.Println("x && y:", x && y)
+	fmt.Println("x || y:", x || y)
 }
