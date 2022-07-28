@@ -1,3 +1,4 @@
+// https://tlx.toki.id/courses/basic/chapters/05/problems/F
 package main
 
 import "fmt"
@@ -13,7 +14,12 @@ func main() {
 	if comma == 0. {
 		fmt.Println(number, number)
 	} else {
-		ceil = floor + 1
+		if number > 0 {
+			ceil = floor + 1
+		} else {
+			ceil = floor
+			floor -= 1
+		}
 		fmt.Println(floor, ceil)
 	}
 }
