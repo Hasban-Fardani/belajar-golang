@@ -4,8 +4,10 @@ import "fmt"
 
 func main() {
 	fmt.Println("===== Perulangan =====")
-	var a int
-	var b = 0
+	var (
+		a int
+		b int
+	)
 	fmt.Print("masukkan angka: ")
 	fmt.Scanln(&a)
 	for i := 0; i < a; i++ {
@@ -18,5 +20,18 @@ func main() {
 		fmt.Println("loop ke", b)
 		b += 1
 		fmt.Scanln(&a)
+	}
+
+	test := [...]int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+	for i := range test {
+		fmt.Println(i)
+	}
+
+	me := map[string]string{
+		"nama": "Hasban Fardani",
+		"Hobi": "Coding",
+	}
+	for key, value := range me {
+		fmt.Println(key, value)
 	}
 }
