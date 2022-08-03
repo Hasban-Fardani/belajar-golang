@@ -49,7 +49,7 @@ func (Var Variabel) strf() string {
 	}
 }
 
-func (aljabar Aljabar) add(other Aljabar) Aljabar {
+func (aljabar Aljabar) sum(other Aljabar) Aljabar {
 	for i, v := range aljabar.variabel {
 		if i < len(other.variabel) {
 			if v == other.variabel[i] {
@@ -70,6 +70,6 @@ func main() {
 	x2 := Variabel{1, "x", 2}
 	al2 := Aljabar{}
 	al2.variabel = []Variabel{x2}
-	al.add(al2)
+	al.sum(al2)
 	fmt.Println(al)
 }
