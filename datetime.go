@@ -7,7 +7,6 @@ import (
 )
 
 func main(){
-	runtime.GOMAXPROCS(3)
 	sekarang := time.Now()
 	fmt.Printf("sekarang: %v\n", sekarang)
 	
