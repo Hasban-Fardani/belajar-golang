@@ -14,7 +14,7 @@ type Levels map[string]desc
 func get_random_num(min, max int) int {
 	if (min > max) {min-=max;max+=min}
 	rand.Seed(time.Now().UTC().UnixNano())
-	return rand.Intn(max - min) 
+	return rand.Intn(max - min) + min
 }
 
 func main(){
@@ -49,7 +49,6 @@ func main(){
 	now   := time.Now()
 	for jalan{
 		fmt.Println()
-		fmt.Printf("skor : %d \n", skor)
 		fmt.Printf("nyawa: %d \n", 3 - salah)
 		// fmt.Printf("question no.%d \n", nomor)
 		
@@ -61,20 +60,22 @@ func main(){
 		if jawaban == a + b {
 			fmt.Println("Benar...")
 			s, _ = strconv.Atoi(*level)
-			skor += s
+			// skor += s * s
+			skor += s * s 
 			nomor += 1
-		} else {
-			salah += 1
-			fmt.Println("Salah!!!")
-		}
-		now = time.Now()
-		waktu += now.Sub(start).Seconds()
-		start = time.Now()
-
+			} else {
+				salah += 1
+				fmt.Println("Salah!!!")
+			}
+			now = time.Now()
+			waktu += now.Sub(start).Seconds()
+			start = time.Now()
+			
 		if salah == 3 {
-			fmt.Println("\nProgram Selesai")
+			fmt.Println("\nQuiz Selesai...")
 			break
 		}
 	}
+	fmt.Printf("skor : %d \n", skor)
 	fmt.Println("time:", waktu, "detik")
 }
