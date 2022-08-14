@@ -8,7 +8,9 @@ func main() {
 	fmt.Println(angka)
 
 	// apasih kegunaan dari '&' ?
-	var test = 1
-	fmt.Println(&test) // akan mengeluarkan memory address dari test
+	fmt.Println(&angka, ":", angka) // akan mengeluarkan memory address dari test
 	// singkatnya, '&' berguna untuk mengambil memory address dari suatu var
+
+	// a, err := fmt.Scanln(&angka)
+	// fmt.Println(angka, a, err)
 }

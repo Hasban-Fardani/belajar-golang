@@ -1,3 +1,4 @@
+// entah kenapa waktu itu jalan, sekarang mah malah error
 package main
 
 import (

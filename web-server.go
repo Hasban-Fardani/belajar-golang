@@ -6,9 +6,14 @@ import (
 	"net/http"
 )
 
+type test struct {
+	name string
+}
+
 func index(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintln(w, "Helllo World from go server")
-	fmt.Println(*r)
+	fmt.Fprintln(w, "Hello World from go server")
+	fmt.Println("method:", r.Method, "from:", r.RemoteAddr)
+	fmt.Println(r.)
 }
 func main() {
 	http.HandleFunc("/", index)
