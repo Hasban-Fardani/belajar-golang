@@ -23,8 +23,32 @@ func main() {
 	isExist := strings.Contains(myString, "name")
 	fmt.Println(isExist)
 	countA := strings.Count(myString, "a")
+
 	fmt.Println("count a:", countA)
 	indexHa := strings.Index(myString, "Ha")
 	fmt.Println("index ha:", indexHa)
 
+	hasPrefix := strings.HasPrefix(myString, "Ha")
+	fmt.Println("hasprefix 'Ha':", hasPrefix)
+	hasPrefix = strings.HasPrefix(myString, "na")
+	fmt.Println("hasprefix 'na':", hasPrefix)
+
+	hasSuffix := strings.HasSuffix(myString, "ol")
+	fmt.Println("hassuffix 'Ha':", hasSuffix)
+	hasSuffix = strings.HasSuffix(myString, "ld")
+	fmt.Println("hassuffix 'na':", hasSuffix)
+
+	fmt.Println(strings.Repeat("test ", 3))
+
+	fmt.Println(strings.Split(myString, " "))
+
+	myString2 := "banananana"
+	fmt.Println("text asli:", myString2)
+	fmt.Println(strings.Replace(myString2, "a", "o", 1))
+	fmt.Println(strings.Replace(myString2, "a", "o", 2))
+	fmt.Println(strings.Replace(myString2, "a", "o", 3))
+	fmt.Println(strings.Replace(myString2, "a", "o", -1))
+
+	fmt.Println("to upper:", strings.ToUpper(myString))
+	fmt.Println("to lower:", strings.ToLower(myString))
 }
