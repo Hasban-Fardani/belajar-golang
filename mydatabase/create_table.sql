@@ -1,5 +1,5 @@
 create table if not exists `users` (
-	`id` varchar(7) not null,
+	`id` varchar(7) not null unique,
     `name` varchar(255) not null,
     `email` varchar(255) not null,
     `password` varchar(16) not null,

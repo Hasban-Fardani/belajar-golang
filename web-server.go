@@ -13,7 +13,7 @@ type test struct {
 func index(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintln(w, "Hello World from go server")
 	fmt.Println("method:", r.Method, "from:", r.RemoteAddr)
-	fmt.Println(r.)
+
 }
 func main() {
 	http.HandleFunc("/", index)
