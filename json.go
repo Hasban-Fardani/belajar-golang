@@ -41,7 +41,7 @@ func main() {
 	fmt.Println(data["Age"])
 	fmt.Println(data["Class"])
 
-	Object := User{Name: "Reyga", Age: 16, Kelas: "X PPLG-1"}
+	Object := []User{User{Name: "Reyga", Age: 16, Kelas: "X PPLG-1"}}
 	jsonData1, err := json.Marshal(Object)
 	if err != nil {
 		fmt.Println(err.Error())
