@@ -111,7 +111,7 @@ func main() {
 		w.Write([]byte("Hello user"))
 	})
 
-	http.HandleFunc("/users", func(w http.ResponseWriter, r *http.Request) {
+	http.HandleFunc("/all", func(w http.ResponseWriter, r *http.Request) {
 		if r.Method == "GET" {
 			res, err := get_user_db("select * from \"User\"")
 			if err != nil {
@@ -134,19 +134,20 @@ func main() {
 				fmt.Fprintf(w, "the correct is %s/user/<name>\n", r.Host)
 				return
 			}
-			name := path[l_path-1]
-			cmd := fmt.Sprintf("select * from \"User\" where name = '%s'", name)
-			user_, err := get_user_db(cmd)
-			if err != nil {
-				fmt.Fprintln(w, "error", err.Error())
-				return
-			}
-			jsn, err := json.Marshal(user_[0])
-			fmt.Fprintln(w, string(jsn))
+			fmt.Println(path, r.URL.Path)
+			// name := path[l_path-1]
+			// cmd := fmt.Sprintf("select * from \"User\" where name = '%s'", name)
+			// user_, err := get_user_db(cmd)
+			// if err != nil {
+			// 	fmt.Fprintln(w, "error", err.Error())
+			// 	return
+			// }
+			// jsn, err := json.Marshal(user_[0])
+			// fmt.Fprintln(w, string(jsn))
 		}
 	})
 
-	http.HandleFunc("/add/user", func(w http.ResponseWriter, r *http.Request) {
+	http.HandleFunc("/add", func(w http.ResponseWriter, r *http.Request) {
 		log.SetOutput(w)
 		if r.Method == "POST" {
 			var data users
@@ -166,12 +167,36 @@ func main() {
 				log.Println(err.Error())
 				return
 			}
+			log.Println("succes add user", data.Name)
 		} else {
 			log.Println("method not allowed")
 		}
 	})
-	http.HandleFunc("/delete/user", func(w http.ResponseWriter, r *http.Request) {
-
+	http.HandleFunc("/delete", func(w http.ResponseWriter, r *http.Request) {
+		var user users
+		// var result sql.Result
+		if r.Method == "DELETE" {
+			dataStr, err := ReadBody(r)
+			if checkError(err) {
+				log.Println(err.Error())
+			}
+			err = json.Unmarshal([]byte(dataStr), &user)
+			if checkError(err) {
+				log.Println(err.Error())
+				return
+			}
+			query := `DELETE FROM "User" WHERE id=:id`
+			if _, err = db.NamedExec(query, user); checkError(err) {
+				log.Println(err.Error())
+				return
+			}
+			fmt.Println("lewat sini")
+			log.Println("succes deleted", user.Id)
+		} else {
+			log.Println("method not allowed")
+			return
+		}
+		// log.Println(result)
 	})
 
 	fmt.Printf("serve on http://%s \n", URL)
