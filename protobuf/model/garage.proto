@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package model;
+option go_package = ".";
+
+message GarageCoordinate {
+    float latitude = 1;
+    float longtitude = 2;
+}
+
+message Garage {
+    string id = 1;
+    string name = 2;
+    GarageCoordinate coordinate = 3;
+}
+
+message GarageList {
+    repeated Garage list = 1;
+}
+
+message GarageListByUser {
+    map<string, GarageList> list = 1;
+}
